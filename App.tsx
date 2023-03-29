@@ -7,6 +7,7 @@ import { Loading } from '@components/Loading';
 import theme from './src/theme';
 
 import { ThemeProvider } from 'styled-components';
+import { NewGroup } from '@screens/NewGroup';
 
 export default function App() {
 
@@ -19,7 +20,7 @@ export default function App() {
         translucent
         backgroundColor="transparent"
       />
-      {fontsLoaded ? <Groups /> : <Loading />}
+      {fontsLoaded ? <NewGroup /> : <Loading />}
     </ThemeProvider>
   );
 }

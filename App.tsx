@@ -8,6 +8,7 @@ import theme from './src/theme';
 
 import { ThemeProvider } from 'styled-components';
 import { NewGroup } from '@screens/NewGroup';
+import { Players } from '@screens/Players';
 
 export default function App() {
 
@@ -20,7 +21,7 @@ export default function App() {
         translucent
         backgroundColor="transparent"
       />
-      {fontsLoaded ? <NewGroup /> : <Loading />}
+      {fontsLoaded ? <Players /> : <Loading />}
     </ThemeProvider>
   );
 }

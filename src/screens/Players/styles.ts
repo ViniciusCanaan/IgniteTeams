@@ -1,7 +1,20 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
+    ${({ theme }) => css`
     flex:1;
-    background-color: ${({theme}) => theme.COLORS.GRAY_600};
+    background-color: ${theme.COLORS.GRAY_600};
     padding: 24px;
+    `}
+   
+`;
+
+export const Form = styled.View`
+    ${({ theme }) => css`
+    width:100%;
+    background-color: ${theme.COLORS.GRAY_700};
+    flex-direction:row;
+    justify-content:center;
+    border-radius:6px;
+    `}
 `;

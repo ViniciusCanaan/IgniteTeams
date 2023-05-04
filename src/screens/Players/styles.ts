@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
     ${({ theme }) => css`
     flex:1;
     background-color: ${theme.COLORS.GRAY_600};
@@ -27,7 +28,7 @@ margin:32px 0 12px;
 `
 
 export const NumberOfPlayer = styled.Text`
-    ${({theme}) => css`
+    ${({ theme }) => css`
         color: ${theme.COLORS.GRAY_200};
         font-family: ${theme.FONT_FAMILY.BOLD};
         font-size: ${theme.FONT_SIZE.SM}px;

@@ -5,13 +5,17 @@ import { Input } from "@components/Input";
 import { useTheme } from "styled-components/native";
 import { Container, Content, Icon } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 export function NewGroup() {
+
+    const [group, setGroup] = useState('');
+
     const { COLORS } = useTheme();
     const navigation = useNavigation();
 
     function handleNew() {
-        navigation.navigate('players', { group: 'Rocket' });
+        navigation.navigate('players', { group: group });
     }
     return (
         <Container>
@@ -22,6 +26,7 @@ export function NewGroup() {
                 <Input
                     placeholder="Nome da turma"
                     placeholderTextColor={COLORS.GRAY_300}
+                    onChangeText={setGroup}
                 />
                 <Button
                     title="Criar"

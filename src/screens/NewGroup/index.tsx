@@ -6,6 +6,7 @@ import { useTheme } from "styled-components/native";
 import { Container, Content, Icon } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { groupCreate } from "@storage/group/groupCreate";
 
 export function NewGroup() {
 
@@ -14,8 +15,14 @@ export function NewGroup() {
     const { COLORS } = useTheme();
     const navigation = useNavigation();
 
-    function handleNew() {
-        navigation.navigate('players', { group: group });
+    async function handleNew() {
+        try {
+            await groupCreate(group)
+            navigation.navigate('players', { group: group });
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
     return (
         <Container>

@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
 import { HighLight } from "@components/Highlight";
@@ -7,6 +8,7 @@ import { Container, Content, Icon } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { groupCreate } from "@storage/group/groupCreate";
+import { AppError } from "@utils/AppError";
 
 export function NewGroup() {
 
@@ -16,12 +18,18 @@ export function NewGroup() {
     const navigation = useNavigation();
 
     async function handleNew() {
+
         try {
             await groupCreate(group)
             navigation.navigate('players', { group: group });
         }
         catch (error) {
-            console.log(error);
+            if (error instanceof AppError) {
+                Alert.alert('Novo Grupo', error.message);
+            } else {
+                Alert.alert('Novo Grupo', 'Não foi possível criar um novo grupo, tente novamente mais tarde');
+                console.log(error);
+            }
         }
     }
     return (
